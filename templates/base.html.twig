@@ -30,11 +30,15 @@
 						<a href="{{url('app_about')}}">A propos</a>
 					</li>
 					<li>
-						<a href="{{url('app_test', {'param': valeur })}}">test param</a>
+						{{dump(app)}}
+						{% if(app.request.pathInfo) == "/" %}
+							<a href="{{url('app_test', {'param': valeur })}}">test param</a>
+						{% else %}
+							<a href="{{url('app_test', {'param': 42 })}}">test param</a>
+						{% endif %}
 					</li>
-				</ul>
-			</nav>
-		</header>
-		{% block body %}{% endblock %}
+				</li>
+			</ul>
+		</nav>
 	</body>
-</html>
+</html></header>{% block body %}{% endblock %}</body></html>
