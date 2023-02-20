@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	<h1>test</h1>
+	<p>
+		<a href="{{ url ("app_test", {'param':56})}}">lien url</a>
+		<a href="{{ path ("app_test", {'param':56})}}">lien path</a>
+	</p>
+{% endblock %}
