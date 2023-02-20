@@ -1,3 +1,7 @@
+{# 
+	le fichier base.html permet de créer le conteneur par défaut de notre site, un peu comme un template parent
+	par defaut tout les autres template herite du template base 
+#}
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -5,6 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
+		{# les blocs permets de créer des zones pouvant petre ecraser au besoin par les templates enfants #}
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
@@ -30,7 +35,7 @@
 						<a href="{{url('app_about')}}">A propos</a>
 					</li>
 					<li>
-						{{dump(app)}}
+						{# {{dump(app)}} #}
 						{% if(app.request.pathInfo) == "/" %}
 							<a href="{{url('app_test', {'param': valeur })}}">test param</a>
 						{% else %}
