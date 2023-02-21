@@ -1,0 +1,42 @@
+body {
+	margin: auto 3vw;
+	header {
+		nav {
+			ul {
+                background-color: fuchsia;
+				display: flex;
+                justify-content: space-between;
+				li {
+					list-style: none;
+					a {
+						text-decoration: none;
+						color: chartreuse;
+                        padding: 0.5em;
+						&hover {
+							background-color: chartreuse;
+							color: fuchsia;
+						}
+					}
+				}
+			}
+		}
+	}
+	main {
+		display: flex;
+		flex-direction: column;
+		article {
+			h2 {
+				font-size: 2em;
+				text-transform: capitalize;
+				margin-bottom: 3vh;
+                a{
+                    color: aliceblue;
+                    background-color: darkblue;
+                }
+			}
+			p {
+				padding: 1em;
+			}
+		}
+	}
+}

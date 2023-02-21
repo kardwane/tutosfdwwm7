@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles
+{% endblock %}
+
+{% block body %}
+	<main>
+		{% for article in articles %}
+			<article>
+				<h2>
+					<a href="{{ url('app_article_show', {id : article.id} ) }}">
+						{{ article.titre }}
+					</a>
+				</h2>
+			</article>
+		{% endfor %}
+	</main>
+{% endblock %}

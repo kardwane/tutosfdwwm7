@@ -16,8 +16,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        dd($this); // dd pour dump die (permet de faire un dump et arreter l'execution)
-        dump($this); // fait un dump sans arreter l'execution
+        // dd($this); // dd pour dump die (permet de faire un dump et arreter l'execution)
+        // dump($this); // fait un dump sans arreter l'execution
         //rend un template
         return $this->render('home/index.html.twig', [
             'valeur' => mt_rand(1, 100) // passe un chiffre aléatoire à la variable valeur
