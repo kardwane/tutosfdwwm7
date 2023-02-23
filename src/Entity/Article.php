@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -16,13 +17,27 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Length(
+        min: 5,
+        max: 50,
+        minMessage: 'Le titre doit faire au minimum {{ limit }} caratères',
+        maxMessage: 'Le titre doit faire au maximum {{ limit }} caratères',
+    )]
     private ?string $titre = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length(
+        min: 30,
+        minMessage: "Le contenu de l'article doit faire au minimum {{ limit }} caratères",
+    )]
     private ?string $contenu = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $owner = null;
 
     public function getId(): ?int
     {
@@ -69,5 +84,17 @@ class Article
     public function setCreatedAtValue(): void
     {
         $this->createdAt = new \DateTimeImmutable();
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
+
+        return $this;
     }
 }
